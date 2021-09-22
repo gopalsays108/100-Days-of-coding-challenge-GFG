@@ -1,0 +1,66 @@
+Useful links to help you understand the concepts of this problem:
+    https://www.geeksforgeeks.org/median-of-two-sorted-arrays-of-different-sizes/
+   
+Link to My Submission: https://practice.geeksforgeeks.org/viewSol.php?subId=cb4fc1caee58a8f92c34678a3f108e9a&pid=702044&user=gopalsays108
+   
+Problem: Given two sorted arrays array1 and array2 of size m and n respectively. Find the median of the two sorted arrays.
+
+Example 1:
+
+Input:
+m = 3, n = 4
+array1[] = {1,5,9}
+array2[] = {2,3,6,7}
+Output: 5
+Explanation: The middle element for
+{1,2,3,5,6,7,9} is 5
+
+Example 2:
+
+Input:
+m = 2, n = 4
+array1[] = {4,6}
+array2[] = {1,2,3,5}
+Output: 3.5
+
+Your Task:
+The task is to complete the function MedianOfArrays() that takes array1 and array2 as input and returns their median. 
+
+Can you solve the problem in expected time complexity?
+
+Expected Time Complexity: O(min(log n, log m)).
+Expected Auxiliary Space: O((n+m)/2).
+
+Constraints: 
+0 ≤ m,n ≤ 104
+1 ≤ array1[i], array2[i] ≤ 105
+
+Company Tag:  Amazon Samsung Microsoft Google
+
+My Solution:
+
+class GFG 
+{ 
+    static double medianOfArrays(int n, int m, int a[], int b[]) 
+    {
+        // Your Code Here
+        int sum = 0;
+        ArrayList<Integer> ar = new ArrayList<>();
+        for(int i=0; i< (n);i++){
+            ar.add(a[i]);
+        }
+        
+        for(int i=0; i< (m);i++){
+            ar.add(b[i]);
+        }
+        
+        Collections.sort(ar);
+        
+        if((ar.size() & 1) == 0){
+            return  (double) (ar.get((int) Math.round( ar.size() / 2) -1) + ar.get((int) Math.round( ar.size() / 2)))/2;
+        }else{
+            return ar.get((int) Math.round( ar.size() / 2));
+        }
+     //   System.out.println(size + " " + sum);
+    }
+}
